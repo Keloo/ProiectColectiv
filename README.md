@@ -1,4 +1,2 @@
-.checkout
+.Proiect Colectiv
 =========
-
-some text
