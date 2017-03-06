@@ -1,0 +1,4 @@
+.checkout
+=========
+
+some text
