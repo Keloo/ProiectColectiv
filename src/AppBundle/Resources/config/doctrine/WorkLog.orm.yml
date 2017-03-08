@@ -1,0 +1,22 @@
+AppBundle\Entity\WorkLog:
+  type:  entity
+  table: work_log
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    start_time:
+      type: datetime
+    end_time:
+      type: datetime
+    message:
+      type: text
+  manyToOne:
+    user:
+      targetEntity: AppBundle\Entity\User
+      inversedBy: User
+      joinColumn:
+        name: user_id
+        referencedColumnName: id

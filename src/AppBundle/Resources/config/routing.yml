@@ -1,0 +1,31 @@
+homepage:
+    path: /
+    defaults: { _controller: "AppBundle:Default:index" }
+
+app_jobvacancies:
+    resource: "@AppBundle/Resources/config/routing/jobvacancy.yml"
+    prefix:   /jobvacancy
+app_applicant:
+    resource: "@AppBundle/Resources/config/routing/applicant.yml"
+    prefix:   /applicant
+app_associattype:
+    resource: "@AppBundle/Resources/config/routing/associatetype.yml"
+    prefix:   /associatetype
+app_associate:
+    resource: "@AppBundle/Resources/config/routing/associate.yml"
+    prefix:   /associate
+app_worklog:
+    resource: "@AppBundle/Resources/config/routing/worklog.yml"
+    prefix:   /worklog
+app_employee:
+    resource: "@AppBundle/Resources/config/routing/user.yml"
+    prefix:   /employee
+app_demandtype:
+    resource: "@AppBundle/Resources/config/routing/demandtype.yml"
+    prefix:   /demandtype
+app_demand:
+    resource: "@AppBundle/Resources/config/routing/demand.yml"
+    prefix:   /demand
+app_alert:
+        resource: "@AppBundle/Resources/config/routing/alert.yml"
+        prefix:   /alert

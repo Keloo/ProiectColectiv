@@ -76,3 +76,6 @@ fos_user:
     from_email:
         address: panda
         sender_name: panda
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType

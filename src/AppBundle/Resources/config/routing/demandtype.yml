@@ -1,0 +1,24 @@
+demandtype_index:
+    path:     /
+    defaults: { _controller: "AppBundle:DemandType:index" }
+    methods:  GET
+
+demandtype_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:DemandType:show" }
+    methods:  GET
+
+demandtype_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:DemandType:new" }
+    methods:  [GET, POST]
+
+demandtype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:DemandType:edit" }
+    methods:  [GET, POST]
+
+demandtype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:DemandType:delete" }
+    methods:  DELETE

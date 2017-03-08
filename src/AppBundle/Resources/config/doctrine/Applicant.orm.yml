@@ -1,0 +1,28 @@
+AppBundle\Entity\Applicant:
+  type:  entity
+  table: applicant
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    first_name:
+      type: string
+      length: 200
+    last_name:
+      type: string
+      length: 200
+    phone:
+      type: string
+      length: 100
+    address:
+      type: string
+      length: 200
+  oneToOne:
+      jobVacancy:
+        targetEntity: JobVacancy
+        joinColumn:
+          name: job_vacancy_id
+          referencedColumnName: id
+        nullable: false

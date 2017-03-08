@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Worklogs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start_time</th>
+                <th>End_time</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for workLog in workLogs %}
+            <tr>
+                <td><a href="{{ path('worklog_show', { 'id': workLog.id }) }}">{{ workLog.id }}</a></td>
+                <td>{% if workLog.starttime %}{{ workLog.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if workLog.endtime %}{{ workLog.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ workLog.message }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('worklog_show', { 'id': workLog.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('worklog_edit', { 'id': workLog.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('worklog_new') }}">Create a new workLog</a>
+        </li>
+    </ul>
+{% endblock %}

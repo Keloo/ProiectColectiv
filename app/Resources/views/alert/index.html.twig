@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Alerts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start_time</th>
+                <th>End_time</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alert in alerts %}
+            <tr>
+                <td><a href="{{ path('alert_show', { 'id': alert.id }) }}">{{ alert.id }}</a></td>
+                <td>{% if alert.starttime %}{{ alert.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if alert.endtime %}{{ alert.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ alert.message }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('alert_show', { 'id': alert.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('alert_edit', { 'id': alert.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('alert_new') }}">Create a new alert</a>
+        </li>
+    </ul>
+{% endblock %}

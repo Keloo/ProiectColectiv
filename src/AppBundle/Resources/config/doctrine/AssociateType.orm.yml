@@ -1,0 +1,12 @@
+AppBundle\Entity\AssociateType:
+  type:  entity
+  table: associate_type
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 200

@@ -1,0 +1,24 @@
+associate_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Associate:index" }
+    methods:  GET
+
+associate_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Associate:show" }
+    methods:  GET
+
+associate_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Associate:new" }
+    methods:  [GET, POST]
+
+associate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Associate:edit" }
+    methods:  [GET, POST]
+
+associate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Associate:delete" }
+    methods:  DELETE

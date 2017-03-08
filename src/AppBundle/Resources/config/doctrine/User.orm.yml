@@ -7,6 +7,21 @@ AppBundle\Entity\User:
       generator:
         strategy: AUTO
   fields:
-    name:
+    first_name:
+      type: string
+      length: 200
+    last_name:
+      type: string
+      length: 200
+    address:
+      type: string
+      length: 200
+      nullable: true
+    phone:
       type: string
       length: 100
+      nullable: true
+  oneToMany:
+    workLogs:
+      targetEntity: WorkLog
+      mappedBy: user

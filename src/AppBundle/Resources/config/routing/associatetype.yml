@@ -1,0 +1,24 @@
+associatetype_index:
+    path:     /
+    defaults: { _controller: "AppBundle:AssociateType:index" }
+    methods:  GET
+
+associatetype_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:AssociateType:show" }
+    methods:  GET
+
+associatetype_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:AssociateType:new" }
+    methods:  [GET, POST]
+
+associatetype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:AssociateType:edit" }
+    methods:  [GET, POST]
+
+associatetype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:AssociateType:delete" }
+    methods:  DELETE

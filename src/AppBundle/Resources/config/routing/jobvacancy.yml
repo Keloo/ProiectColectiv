@@ -1,0 +1,24 @@
+jobvacancy_index:
+    path:     /
+    defaults: { _controller: "AppBundle:JobVacancy:index" }
+    methods:  GET
+
+jobvacancy_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:JobVacancy:show" }
+    methods:  GET
+
+jobvacancy_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:JobVacancy:new" }
+    methods:  [GET, POST]
+
+jobvacancy_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:JobVacancy:edit" }
+    methods:  [GET, POST]
+
+jobvacancy_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:JobVacancy:delete" }
+    methods:  DELETE

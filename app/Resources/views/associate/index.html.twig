@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Associates list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for associate in associates %}
+            <tr>
+                <td><a href="{{ path('associate_show', { 'id': associate.id }) }}">{{ associate.id }}</a></td>
+                <td>{{ associate.firstname }}</td>
+                <td>{{ associate.lastname }}</td>
+                <td>{{ associate.phone }}</td>
+                <td>{{ associate.address }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('associate_show', { 'id': associate.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('associate_edit', { 'id': associate.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('associate_new') }}">Create a new associate</a>
+        </li>
+    </ul>
+{% endblock %}

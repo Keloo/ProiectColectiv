@@ -1,0 +1,12 @@
+AppBundle\Entity\JobVacancy:
+  type:  entity
+  table: job_vacancy
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 200

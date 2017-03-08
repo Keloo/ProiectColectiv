@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Applicant</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ applicant.id }}</td>
+            </tr>
+            <tr>
+                <th>First_name</th>
+                <td>{{ applicant.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Last_name</th>
+                <td>{{ applicant.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ applicant.phone }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ applicant.address }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('applicant_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('applicant_edit', { 'id': applicant.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

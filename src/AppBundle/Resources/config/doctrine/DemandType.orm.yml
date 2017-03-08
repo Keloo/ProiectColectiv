@@ -1,0 +1,12 @@
+AppBundle\Entity\DemandType:
+  type:  entity
+  table: demand_type
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 200

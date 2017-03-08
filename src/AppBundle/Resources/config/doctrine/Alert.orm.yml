@@ -1,0 +1,15 @@
+AppBundle\Entity\Alert:
+  type:  entity
+  table: alert
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    start_time:
+      type: datetime
+    end_time:
+      type: datetime
+    message:
+      type: text

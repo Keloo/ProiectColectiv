@@ -1,0 +1,28 @@
+AppBundle\Entity\Associate:
+  type:  entity
+  table: associate
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    first_name:
+      type: string
+      length: 200
+    last_name:
+      type: string
+      length: 200
+    phone:
+      type: string
+      length: 100
+    address:
+      type: string
+      length: 200
+  oneToOne:
+    associateType:
+      targetEntity: AssociateType
+      joinColumn:
+        name: associate_type_id
+        referencedColumnName: id
+      nullable: false
