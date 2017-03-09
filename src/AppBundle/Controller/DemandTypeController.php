@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\DemandType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class DemandTypeController extends Controller
 {
     /**
      * Lists all demandType entities.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function indexAction()
     {
@@ -29,7 +30,7 @@ class DemandTypeController extends Controller
 
     /**
      * Creates a new demandType entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function newAction(Request $request)
     {
@@ -53,7 +54,7 @@ class DemandTypeController extends Controller
 
     /**
      * Finds and displays a demandType entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function showAction(DemandType $demandType)
     {
@@ -67,7 +68,7 @@ class DemandTypeController extends Controller
 
     /**
      * Displays a form to edit an existing demandType entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function editAction(Request $request, DemandType $demandType)
     {
@@ -90,7 +91,7 @@ class DemandTypeController extends Controller
 
     /**
      * Deletes a demandType entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function deleteAction(Request $request, DemandType $demandType)
     {

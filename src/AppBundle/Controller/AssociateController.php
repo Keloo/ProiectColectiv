@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Associate;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class AssociateController extends Controller
 {
     /**
      * Lists all associate entities.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function indexAction()
     {
@@ -29,7 +30,7 @@ class AssociateController extends Controller
 
     /**
      * Creates a new associate entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function newAction(Request $request)
     {
@@ -53,7 +54,7 @@ class AssociateController extends Controller
 
     /**
      * Finds and displays a associate entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function showAction(Associate $associate)
     {
@@ -67,7 +68,7 @@ class AssociateController extends Controller
 
     /**
      * Displays a form to edit an existing associate entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function editAction(Request $request, Associate $associate)
     {
@@ -90,7 +91,7 @@ class AssociateController extends Controller
 
     /**
      * Deletes a associate entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function deleteAction(Request $request, Associate $associate)
     {

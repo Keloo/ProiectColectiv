@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Applicant;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class ApplicantController extends Controller
 {
     /**
      * Lists all applicant entities.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function indexAction()
     {
@@ -29,7 +30,7 @@ class ApplicantController extends Controller
 
     /**
      * Creates a new applicant entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function newAction(Request $request)
     {
@@ -53,7 +54,7 @@ class ApplicantController extends Controller
 
     /**
      * Finds and displays a applicant entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function showAction(Applicant $applicant)
     {
@@ -67,7 +68,7 @@ class ApplicantController extends Controller
 
     /**
      * Displays a form to edit an existing applicant entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function editAction(Request $request, Applicant $applicant)
     {
@@ -90,7 +91,7 @@ class ApplicantController extends Controller
 
     /**
      * Deletes a applicant entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function deleteAction(Request $request, Applicant $applicant)
     {

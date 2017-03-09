@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Alert;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class AlertController extends Controller
 
     /**
      * Creates a new alert entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function newAction(Request $request)
     {
@@ -67,7 +68,7 @@ class AlertController extends Controller
 
     /**
      * Displays a form to edit an existing alert entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function editAction(Request $request, Alert $alert)
     {
@@ -90,7 +91,7 @@ class AlertController extends Controller
 
     /**
      * Deletes a alert entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function deleteAction(Request $request, Alert $alert)
     {

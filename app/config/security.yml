@@ -6,7 +6,7 @@ security:
 
     role_hierarchy:
         ROLE_EMPLOYEE: ROLE_USER
-        ROLE_HR:       ROLE_EMPLOYEE
+        ROLE_HR:       ROLE_USER
         ROLE_ADMIN: ROLE_ADMIN
 
     providers:
@@ -29,7 +29,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/board/, role: ROLE_USER }
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use AppBundle\Entity\User;
 use AppBundle\Entity\WorkLog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +22,14 @@ class WorkLogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $workLogs = $em->getRepository('AppBundle:WorkLog')->findAll();
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if (in_array('ROLE_HR', $user->getRoles())) {
+            $workLogs = $em->getRepository("AppBundle:WorkLog")->findAll();
+        } else {
+            $workLogs = $user->getWorkLogs();
+        }
 
         return $this->render('worklog/index.html.twig', array(
             'workLogs' => $workLogs,
@@ -29,7 +38,7 @@ class WorkLogController extends Controller
 
     /**
      * Creates a new workLog entity.
-     *
+     * @Security("has_role('ROLE_EMPLOYEE')")
      */
     public function newAction(Request $request)
     {
@@ -53,7 +62,8 @@ class WorkLogController extends Controller
 
     /**
      * Finds and displays a workLog entity.
-     *
+     * @Security("has_role('ROLE_HR')")
+     * @Security("has_role('ROLE_EMPLOYEE')")
      */
     public function showAction(WorkLog $workLog)
     {
@@ -67,7 +77,7 @@ class WorkLogController extends Controller
 
     /**
      * Displays a form to edit an existing workLog entity.
-     *
+     * @Security("has_role('ROLE_EMPLOYEE')")
      */
     public function editAction(Request $request, WorkLog $workLog)
     {
@@ -90,7 +100,7 @@ class WorkLogController extends Controller
 
     /**
      * Deletes a workLog entity.
-     *
+     * @Security("has_role('ROLE_EMPLOYEE')")
      */
     public function deleteAction(Request $request, WorkLog $workLog)
     {

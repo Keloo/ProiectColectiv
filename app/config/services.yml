@@ -3,3 +3,7 @@ services:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    app.role_on_registration:
+            class: AppBundle\EventListener\RegistrationListener
+            tags:
+                - { name: kernel.event_subscriber }

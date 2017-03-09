@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\JobVacancy;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class JobVacancyController extends Controller
 {
     /**
      * Lists all jobVacancy entities.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function indexAction()
     {
@@ -29,7 +30,7 @@ class JobVacancyController extends Controller
 
     /**
      * Creates a new jobVacancy entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function newAction(Request $request)
     {
@@ -53,7 +54,7 @@ class JobVacancyController extends Controller
 
     /**
      * Finds and displays a jobVacancy entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function showAction(JobVacancy $jobVacancy)
     {
@@ -67,7 +68,7 @@ class JobVacancyController extends Controller
 
     /**
      * Displays a form to edit an existing jobVacancy entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function editAction(Request $request, JobVacancy $jobVacancy)
     {
@@ -90,7 +91,7 @@ class JobVacancyController extends Controller
 
     /**
      * Deletes a jobVacancy entity.
-     *
+     * @Security("has_role('ROLE_HR')")
      */
     public function deleteAction(Request $request, JobVacancy $jobVacancy)
     {
