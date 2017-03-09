@@ -2,23 +2,31 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function indexAction(Request $request)
     {
-        var_dump($this->getUser()->getRoles());
-        die();
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+        if ($this->isGranted("IS_AUTHENTICATED_FULLY")) {
+            return $this->redirectToRoute("board_index");
+        } else {
+            return $this->redirectToRoute("fos_user_security_login");
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function boardIndexAction(Request $request)
+    {
+        return new Response("@todo implement");
     }
 }

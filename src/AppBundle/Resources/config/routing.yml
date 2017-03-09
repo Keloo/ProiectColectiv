@@ -1,6 +1,9 @@
 homepage:
     path: /
     defaults: { _controller: "AppBundle:Default:index" }
+board_index:
+    path: /board
+    defaults: { _controller: "AppBundle:Default:boardIndex" }
 
 app_jobvacancies:
     resource: "@AppBundle/Resources/config/routing/jobvacancy.yml"
