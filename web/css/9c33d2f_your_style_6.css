@@ -1,7 +1,9 @@
 html {
-    height: 100%
+    height: 100%;
+    background: none;
 }
 body {
+    background: none;
     min-height: 100%;
 }
 .minified .login-info span {
