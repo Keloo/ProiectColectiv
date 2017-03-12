@@ -13,7 +13,7 @@ class DemandType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('message')->add('demandType');
+        $builder->add('message')->add('demandType')->add('user');
     }
     
     /**

@@ -1,0 +1,62 @@
+{% extends '::board/base.html.twig' %}
+
+{% block body %}
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Applicants</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First_name</th>
+                    <th>Last_name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Vacancy</th>
+                    {% if 'ROLE_HR' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for applicant in applicants %}
+                    <tr>
+                        <td>{{ applicant.id }}</td>
+                        <td>{{ applicant.firstname }}</td>
+                        <td>{{ applicant.lastname }}</td>
+                        <td>{{ applicant.phone }}</td>
+                        <td>{{ applicant.address }}</td>
+                        <td>{{ applicant.jobVacancy.name }}</td>
+                        {% if 'ROLE_HR' in user.roles %}
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('applicant_show', { 'id': applicant.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('applicant_edit', { 'id': applicant.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+                {% if 'ROLE_HR' in user.roles %}
+                    <tr>
+                        <td colspan="7">
+                            <a class="btn btn-lg btn-primary" href="{{ path('applicant_new') }}">Create a new applicant</a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

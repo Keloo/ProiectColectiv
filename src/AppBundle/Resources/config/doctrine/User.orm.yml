@@ -25,3 +25,6 @@ AppBundle\Entity\User:
     workLogs:
       targetEntity: WorkLog
       mappedBy: user
+    demands:
+      targetEntity: Demand
+      mappedBy: user

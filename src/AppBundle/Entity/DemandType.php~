@@ -52,4 +52,3 @@ class DemandType
         return $this->name;
     }
 }
-

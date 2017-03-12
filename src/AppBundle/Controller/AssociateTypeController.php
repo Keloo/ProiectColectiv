@@ -23,7 +23,8 @@ class AssociateTypeController extends Controller
 
         $associateTypes = $em->getRepository('AppBundle:AssociateType')->findAll();
 
-        return $this->render('associatetype/index.html.twig', array(
+        return $this->render('board/associatetype/index.html.twig', array(
+            'user' => $this->getUser(),
             'associateTypes' => $associateTypes,
         ));
     }
@@ -46,7 +47,7 @@ class AssociateTypeController extends Controller
             return $this->redirectToRoute('associatetype_show', array('id' => $associateType->getId()));
         }
 
-        return $this->render('associatetype/new.html.twig', array(
+        return $this->render('board/associatetype/new.html.twig', array(
             'associateType' => $associateType,
             'form' => $form->createView(),
         ));
@@ -60,7 +61,7 @@ class AssociateTypeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($associateType);
 
-        return $this->render('associatetype/show.html.twig', array(
+        return $this->render('board/associatetype/show.html.twig', array(
             'associateType' => $associateType,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +83,7 @@ class AssociateTypeController extends Controller
             return $this->redirectToRoute('associatetype_edit', array('id' => $associateType->getId()));
         }
 
-        return $this->render('associatetype/edit.html.twig', array(
+        return $this->render('board/associatetype/edit.html.twig', array(
             'associateType' => $associateType,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,0 +1,48 @@
+{% extends '::board/base.html.twig' %}
+
+{% block body %}
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Associates</li><li>List</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    {% if 'ROLE_HR' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for jobVacancy in jobVacancies %}
+                    <tr>
+                        <td>{{ jobVacancy.id }}</td>
+                        <td>{{ jobVacancy.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('jobvacancy_show', { 'id': jobVacancy.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('jobvacancy_edit', { 'id': jobVacancy.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">
+                        <a class="btn btn-lg btn-primary" href="{{ path('jobvacancy_new') }}">Create a new jobVacancy</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

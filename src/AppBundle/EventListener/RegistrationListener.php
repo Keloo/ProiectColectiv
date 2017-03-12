@@ -5,6 +5,7 @@ namespace AppBundle\EventListener;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Form\FormEvent;
 
 class RegistrationListener implements EventSubscriberInterface
 {

@@ -9,10 +9,16 @@ AppBundle\Entity\Demand:
   fields:
     message:
       type: text
-  oneToOne:
+  manyToOne:
     demandType:
       targetEntity: DemandType
       joinColumn:
         name: demand_type_id
         referencedColumnName: id
       nullable: false
+    user:
+      targetEntity: AppBundle\Entity\User
+      inversedBy: User
+      joinColumn:
+        name: user_id
+        referencedColumnName: id

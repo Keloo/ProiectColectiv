@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Demand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,15 +16,22 @@ class DemandController extends Controller
 {
     /**
      * Lists all demand entities.
-     * @Security("has_role('ROLE_HR')")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $demands = $em->getRepository('AppBundle:Demand')->findAll();
+        /** @var User $user */
+        $user = $this->getUser();
 
-        return $this->render('demand/index.html.twig', array(
+        if (in_array('ROLE_HR', $user->getRoles())) {
+            $demands = $em->getRepository('AppBundle:Demand')->findAll();
+        } else {
+            $demands = $user->getDemands();
+        }
+
+        return $this->render('board/demand/index.html.twig', array(
+            'user' => $this->getUser(),
             'demands' => $demands,
         ));
     }
@@ -46,7 +54,7 @@ class DemandController extends Controller
             return $this->redirectToRoute('demand_show', array('id' => $demand->getId()));
         }
 
-        return $this->render('demand/new.html.twig', array(
+        return $this->render('board/demand/new.html.twig', array(
             'demand' => $demand,
             'form' => $form->createView(),
         ));
@@ -54,13 +62,12 @@ class DemandController extends Controller
 
     /**
      * Finds and displays a demand entity.
-     * @Security("has_role('ROLE_HR')")
      */
     public function showAction(Demand $demand)
     {
         $deleteForm = $this->createDeleteForm($demand);
 
-        return $this->render('demand/show.html.twig', array(
+        return $this->render('board/demand/show.html.twig', array(
             'demand' => $demand,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +89,7 @@ class DemandController extends Controller
             return $this->redirectToRoute('demand_edit', array('id' => $demand->getId()));
         }
 
-        return $this->render('demand/edit.html.twig', array(
+        return $this->render('board/demand/edit.html.twig', array(
             'demand' => $demand,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

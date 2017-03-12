@@ -1,0 +1,54 @@
+{% extends '::board/base.html.twig' %}
+
+{% block body %}
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Demands</li><li>List</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    {% if 'ROLE_HR' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for demand in demands %}
+                    <tr>
+                        <td>{{ demand.id }}</td>
+                        <td>{{ demand.message }}</td>
+                        <td><a href="{{ path('employee_show', { 'id': demand.user.id }) }}">{{ demand.user.username }}</a></td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('demand_show', { 'id': demand.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('demand_edit', { 'id': demand.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                {% if 'ROLE_EMPLOYEE' in user.roles %}
+                    <tr>
+                        <td colspan="6">
+                            <a class="btn btn-lg btn-primary" href="{{ path('demand_new') }}">Create a new demand</a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

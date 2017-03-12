@@ -31,7 +31,8 @@ class WorkLogController extends Controller
             $workLogs = $user->getWorkLogs();
         }
 
-        return $this->render('worklog/index.html.twig', array(
+        return $this->render('board/worklog/index.html.twig', array(
+            'user' => $this->getUser(),
             'workLogs' => $workLogs,
         ));
     }
@@ -54,7 +55,7 @@ class WorkLogController extends Controller
             return $this->redirectToRoute('worklog_show', array('id' => $workLog->getId()));
         }
 
-        return $this->render('worklog/new.html.twig', array(
+        return $this->render('board/worklog/new.html.twig', array(
             'workLog' => $workLog,
             'form' => $form->createView(),
         ));
@@ -62,14 +63,12 @@ class WorkLogController extends Controller
 
     /**
      * Finds and displays a workLog entity.
-     * @Security("has_role('ROLE_HR')")
-     * @Security("has_role('ROLE_EMPLOYEE')")
      */
     public function showAction(WorkLog $workLog)
     {
         $deleteForm = $this->createDeleteForm($workLog);
 
-        return $this->render('worklog/show.html.twig', array(
+        return $this->render('board/worklog/show.html.twig', array(
             'workLog' => $workLog,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +90,7 @@ class WorkLogController extends Controller
             return $this->redirectToRoute('worklog_edit', array('id' => $workLog->getId()));
         }
 
-        return $this->render('worklog/edit.html.twig', array(
+        return $this->render('board/worklog/edit.html.twig', array(
             'workLog' => $workLog,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

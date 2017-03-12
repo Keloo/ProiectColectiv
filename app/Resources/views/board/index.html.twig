@@ -1,0 +1,21 @@
+{% extends '::board/base.html.twig' %}
+
+{% block body %}
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Dashboard</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <h1>Welcome</h1>
+        </div>
+    </div>
+{% endblock body %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}

@@ -19,7 +19,7 @@ AppBundle\Entity\Applicant:
     address:
       type: string
       length: 200
-  oneToOne:
+  manyToOne:
       jobVacancy:
         targetEntity: JobVacancy
         joinColumn:

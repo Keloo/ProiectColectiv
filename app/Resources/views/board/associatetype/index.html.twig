@@ -1,0 +1,52 @@
+{% extends '::board/base.html.twig' %}
+
+{% block body %}
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Associates</li><li>Types</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    {% if 'ROLE_HR' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for associateType in associateTypes %}
+                    <tr>
+                        <td>{{ associateType.id }}</td>
+                        <td>{{ associateType.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('associatetype_show', { 'id': associateType.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('associatetype_edit', { 'id': associateType.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                {% if 'ROLE_HR' in user.roles %}
+                    <tr>
+                        <td colspan="6">
+                            <a class="btn btn-lg btn-primary" href="{{ path('associatetype_new') }}">Create a new associate type</a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

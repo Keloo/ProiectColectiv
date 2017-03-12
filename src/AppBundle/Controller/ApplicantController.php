@@ -23,7 +23,8 @@ class ApplicantController extends Controller
 
         $applicants = $em->getRepository('AppBundle:Applicant')->findAll();
 
-        return $this->render('applicant/index.html.twig', array(
+        return $this->render('board/applicant/index.html.twig', array(
+            'user' => $this->getUser(),
             'applicants' => $applicants,
         ));
     }
@@ -46,7 +47,7 @@ class ApplicantController extends Controller
             return $this->redirectToRoute('applicant_show', array('id' => $applicant->getId()));
         }
 
-        return $this->render('applicant/new.html.twig', array(
+        return $this->render('board/applicant/new.html.twig', array(
             'applicant' => $applicant,
             'form' => $form->createView(),
         ));
@@ -60,7 +61,7 @@ class ApplicantController extends Controller
     {
         $deleteForm = $this->createDeleteForm($applicant);
 
-        return $this->render('applicant/show.html.twig', array(
+        return $this->render('board/applicant/show.html.twig', array(
             'applicant' => $applicant,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +83,7 @@ class ApplicantController extends Controller
             return $this->redirectToRoute('applicant_edit', array('id' => $applicant->getId()));
         }
 
-        return $this->render('applicant/edit.html.twig', array(
+        return $this->render('board/applicant/edit.html.twig', array(
             'applicant' => $applicant,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

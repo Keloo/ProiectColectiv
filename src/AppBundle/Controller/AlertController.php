@@ -23,8 +23,9 @@ class AlertController extends Controller
 
         $alerts = $em->getRepository('AppBundle:Alert')->findAll();
 
-        return $this->render('alert/index.html.twig', array(
+        return $this->render('board/alert/index.html.twig', array(
             'alerts' => $alerts,
+            'user' => $this->getUser(),
         ));
     }
 
@@ -46,7 +47,7 @@ class AlertController extends Controller
             return $this->redirectToRoute('alert_show', array('id' => $alert->getId()));
         }
 
-        return $this->render('alert/new.html.twig', array(
+        return $this->render('board/alert/new.html.twig', array(
             'alert' => $alert,
             'form' => $form->createView(),
         ));
@@ -60,7 +61,7 @@ class AlertController extends Controller
     {
         $deleteForm = $this->createDeleteForm($alert);
 
-        return $this->render('alert/show.html.twig', array(
+        return $this->render('board/alert/show.html.twig', array(
             'alert' => $alert,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +83,7 @@ class AlertController extends Controller
             return $this->redirectToRoute('alert_edit', array('id' => $alert->getId()));
         }
 
-        return $this->render('alert/edit.html.twig', array(
+        return $this->render('board/alert/edit.html.twig', array(
             'alert' => $alert,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

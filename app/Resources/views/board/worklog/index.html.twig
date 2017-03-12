@@ -1,0 +1,61 @@
+{% extends '::board/base.html.twig' %}
+
+{% block body %}
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Associates</li><li>List</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Start_time</th>
+                    <th>End_time</th>
+                    <th>Message</th>
+
+                    {% if 'ROLE_EMPLOYEE' in user.roles %}
+                        <th>Actions</th>
+                        {% else %}
+                        <th>Username</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for workLog in workLogs %}
+                    <tr>
+                        <td>{{ workLog.id }}</td>
+                        <td>{% if workLog.starttime %}{{ workLog.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if workLog.endtime %}{{ workLog.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ workLog.message }}</td>
+                        {% if 'ROLE_EMPLOYEE' in user.roles %}
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('worklog_show', { 'id': workLog.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('worklog_edit', { 'id': workLog.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        {% else %}
+                            <td><a href="{{ path('employee_show', { 'id': workLog.user.id }) }}">{{ workLog.user.username }}</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                {% if 'ROLE_EMPLOYEE' in user.roles %}
+                    <tr>
+                        <td colspan="6">
+                            <a class="btn btn-lg btn-primary"  href="{{ path('worklog_new') }}">Create a new workLog</a>
+                        </td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

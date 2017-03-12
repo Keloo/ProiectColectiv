@@ -81,4 +81,3 @@ class Demand
         return $this->demandType;
     }
 }
-

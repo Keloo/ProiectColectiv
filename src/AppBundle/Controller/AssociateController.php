@@ -23,7 +23,8 @@ class AssociateController extends Controller
 
         $associates = $em->getRepository('AppBundle:Associate')->findAll();
 
-        return $this->render('associate/index.html.twig', array(
+        return $this->render('board/associate/index.html.twig', array(
+            'user' => $this->getUser(),
             'associates' => $associates,
         ));
     }
@@ -46,7 +47,7 @@ class AssociateController extends Controller
             return $this->redirectToRoute('associate_show', array('id' => $associate->getId()));
         }
 
-        return $this->render('associate/new.html.twig', array(
+        return $this->render('board/associate/new.html.twig', array(
             'associate' => $associate,
             'form' => $form->createView(),
         ));
@@ -60,7 +61,7 @@ class AssociateController extends Controller
     {
         $deleteForm = $this->createDeleteForm($associate);
 
-        return $this->render('associate/show.html.twig', array(
+        return $this->render('board/associate/show.html.twig', array(
             'associate' => $associate,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +83,7 @@ class AssociateController extends Controller
             return $this->redirectToRoute('associate_edit', array('id' => $associate->getId()));
         }
 
-        return $this->render('associate/edit.html.twig', array(
+        return $this->render('board/associate/edit.html.twig', array(
             'associate' => $associate,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

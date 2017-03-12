@@ -23,7 +23,8 @@ class JobVacancyController extends Controller
 
         $jobVacancies = $em->getRepository('AppBundle:JobVacancy')->findAll();
 
-        return $this->render('jobvacancy/index.html.twig', array(
+        return $this->render('board/jobvacancy/index.html.twig', array(
+            'user' => $this->getUser(),
             'jobVacancies' => $jobVacancies,
         ));
     }
@@ -46,7 +47,7 @@ class JobVacancyController extends Controller
             return $this->redirectToRoute('jobvacancy_show', array('id' => $jobVacancy->getId()));
         }
 
-        return $this->render('jobvacancy/new.html.twig', array(
+        return $this->render('board/jobvacancy/new.html.twig', array(
             'jobVacancy' => $jobVacancy,
             'form' => $form->createView(),
         ));
@@ -60,7 +61,7 @@ class JobVacancyController extends Controller
     {
         $deleteForm = $this->createDeleteForm($jobVacancy);
 
-        return $this->render('jobvacancy/show.html.twig', array(
+        return $this->render('board/jobvacancy/show.html.twig', array(
             'jobVacancy' => $jobVacancy,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +83,7 @@ class JobVacancyController extends Controller
             return $this->redirectToRoute('jobvacancy_edit', array('id' => $jobVacancy->getId()));
         }
 
-        return $this->render('jobvacancy/edit.html.twig', array(
+        return $this->render('board/jobvacancy/edit.html.twig', array(
             'jobVacancy' => $jobVacancy,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

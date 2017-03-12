@@ -27,6 +27,8 @@ class DefaultController extends Controller
      */
     public function boardIndexAction(Request $request)
     {
-        return new Response("@todo implement");
+        return $this->render('board/index.html.twig', [
+            'user' => $this->getUser(),
+        ]);
     }
 }

@@ -1,0 +1,59 @@
+{% extends 'board/base.html.twig' %}
+
+{% block body %}
+
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Alerts</li>
+            </ol>
+        </div>
+
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Message</th>
+                    {% if 'ROLE_HR' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for alert in alerts %}
+                    <tr>
+                        <td>{{ alert.id }}</td>
+                        <td>{% if alert.starttime %}{{ alert.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if alert.endtime %}{{ alert.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ alert.message }}</td>
+                        {% if 'ROLE_HR' in user.roles %}
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('alert_show', { 'id': alert.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('alert_edit', { 'id': alert.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+                {% if 'ROLE_HR' in user.roles %}
+                    <tr>
+                        <td colspan="5">
+                            <a class="btn btn-lg btn-primary" href="{{ path('alert_new') }}">Create a new alert</a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

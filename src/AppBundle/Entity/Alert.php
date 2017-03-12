@@ -110,4 +110,3 @@ class Alert
         return $this->message;
     }
 }
-
