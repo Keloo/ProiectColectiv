@@ -21,6 +21,12 @@ AppBundle\Entity\User:
       type: string
       length: 100
       nullable: true
+    work_start_date:
+      type: datetime
+      nullable: false
+    work_end_date:
+      type: datetime
+      nullable: true
   oneToMany:
     workLogs:
       targetEntity: WorkLog

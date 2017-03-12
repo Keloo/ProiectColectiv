@@ -111,6 +111,14 @@ class User extends BaseModel
      */
     private $phone;
 
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->work_start_date = new \DateTime('now');
+        parent::__construct();
+    }
 
     /**
      * Set firstName
@@ -206,5 +214,73 @@ class User extends BaseModel
     public function getPhone()
     {
         return $this->phone;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $demands;
+
+
+    /**
+     * Add demand
+     *
+     * @param \AppBundle\Entity\Demand $demand
+     *
+     * @return User
+     */
+    public function addDemand(\AppBundle\Entity\Demand $demand)
+    {
+        $this->demands[] = $demand;
+
+        return $this;
+    }
+
+    /**
+     * Remove demand
+     *
+     * @param \AppBundle\Entity\Demand $demand
+     */
+    public function removeDemand(\AppBundle\Entity\Demand $demand)
+    {
+        $this->demands->removeElement($demand);
+    }
+
+    /**
+     * Get demands
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemands()
+    {
+        return $this->demands;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $work_start_date;
+
+
+    /**
+     * Set workStartDate
+     *
+     * @param \DateTime $workStartDate
+     *
+     * @return User
+     */
+    public function setWorkStartDate($workStartDate)
+    {
+        $this->work_start_date = $workStartDate;
+
+        return $this;
+    }
+
+    /**
+     * Get workStartDate
+     *
+     * @return \DateTime
+     */
+    public function getWorkStartDate()
+    {
+        return $this->work_start_date;
     }
 }

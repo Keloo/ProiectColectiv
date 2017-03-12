@@ -17,17 +17,23 @@
                     <th>Last_name</th>
                     <th>Address</th>
                     <th>Phone</th>
+                    <th>Work start date</th>
+                    <th>Work end date</th>
+                    <th>Hours worked</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for user in users %}
                     <tr>
-                        <td><a href="{{ path('employee_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                        <td>{{ user.id }}</td>
                         <td>{{ user.firstname }}</td>
                         <td>{{ user.lastname }}</td>
                         <td>{{ user.address }}</td>
                         <td>{{ user.phone }}</td>
+                        <td>{% if user.workStartDate %}{{ user.workStartDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if user.workEndDate %}{{ user.workEndDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ user.hoursWorked }}</td>
                         <td>
                             <ul>
                                 <li>

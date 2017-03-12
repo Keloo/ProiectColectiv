@@ -111,6 +111,33 @@ class User extends BaseModel
      */
     private $phone;
 
+    /** @var int  */
+    private $hoursWorked = 0;
+
+    /**
+     * @return int
+     */
+    public function getHoursWorked(): int
+    {
+        return $this->hoursWorked;
+    }
+
+    /**
+     * @param int $hoursWorked
+     */
+    public function setHoursWorked(int $hoursWorked)
+    {
+        $this->hoursWorked = $hoursWorked;
+    }
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->work_start_date = new \DateTime('now');
+        parent::__construct();
+    }
 
     /**
      * Set firstName
@@ -245,5 +272,63 @@ class User extends BaseModel
     public function getDemands()
     {
         return $this->demands;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $work_start_date;
+
+
+    /**
+     * Set workStartDate
+     *
+     * @param \DateTime $workStartDate
+     *
+     * @return User
+     */
+    public function setWorkStartDate($workStartDate)
+    {
+        $this->work_start_date = $workStartDate;
+
+        return $this;
+    }
+
+    /**
+     * Get workStartDate
+     *
+     * @return \DateTime
+     */
+    public function getWorkStartDate()
+    {
+        return $this->work_start_date;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $work_end_date;
+
+
+    /**
+     * Set workEndDate
+     *
+     * @param \DateTime $workEndDate
+     *
+     * @return User
+     */
+    public function setWorkEndDate($workEndDate)
+    {
+        $this->work_end_date = $workEndDate;
+
+        return $this;
+    }
+
+    /**
+     * Get workEndDate
+     *
+     * @return \DateTime
+     */
+    public function getWorkEndDate()
+    {
+        return $this->work_end_date;
     }
 }
