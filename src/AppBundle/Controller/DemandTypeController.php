@@ -49,6 +49,7 @@ class DemandTypeController extends Controller
 
         return $this->render('board/demandtype/new.html.twig', array(
             'demandType' => $demandType,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -59,12 +60,7 @@ class DemandTypeController extends Controller
      */
     public function showAction(DemandType $demandType)
     {
-        $deleteForm = $this->createDeleteForm($demandType);
-
-        return $this->render('board/demandtype/show.html.twig', array(
-            'demandType' => $demandType,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('demandtype_index');
     }
 
     /**
@@ -85,6 +81,7 @@ class DemandTypeController extends Controller
 
         return $this->render('board/demandtype/edit.html.twig', array(
             'demandType' => $demandType,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

@@ -49,6 +49,7 @@ class AssociateTypeController extends Controller
 
         return $this->render('board/associatetype/new.html.twig', array(
             'associateType' => $associateType,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -59,12 +60,7 @@ class AssociateTypeController extends Controller
      */
     public function showAction(AssociateType $associateType)
     {
-        $deleteForm = $this->createDeleteForm($associateType);
-
-        return $this->render('board/associatetype/show.html.twig', array(
-            'associateType' => $associateType,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('associatetype_index');
     }
 
     /**
@@ -85,6 +81,7 @@ class AssociateTypeController extends Controller
 
         return $this->render('board/associatetype/edit.html.twig', array(
             'associateType' => $associateType,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

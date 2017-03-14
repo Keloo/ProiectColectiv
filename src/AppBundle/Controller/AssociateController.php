@@ -49,6 +49,7 @@ class AssociateController extends Controller
 
         return $this->render('board/associate/new.html.twig', array(
             'associate' => $associate,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -59,12 +60,7 @@ class AssociateController extends Controller
      */
     public function showAction(Associate $associate)
     {
-        $deleteForm = $this->createDeleteForm($associate);
-
-        return $this->render('board/associate/show.html.twig', array(
-            'associate' => $associate,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('associate_index');
     }
 
     /**
@@ -85,6 +81,7 @@ class AssociateController extends Controller
 
         return $this->render('board/associate/edit.html.twig', array(
             'associate' => $associate,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

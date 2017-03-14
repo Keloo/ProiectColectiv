@@ -34,14 +34,13 @@
                         {{ form_widget(edit_form._token) }}
 
                         <br>
-                        <br>
                         <input class="btn btn-primary" type="submit" value="Edit" />
-                        {{ form_start(delete_form) }}
-                        <input class="btn btn-danger" type="submit" value="Delete">
-                        {{ form_end(delete_form) }}
-                        <br>
                     </form>
-
+                    <br>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                    <br>
                 </div>
             </div>
 

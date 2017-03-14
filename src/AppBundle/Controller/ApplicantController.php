@@ -48,6 +48,7 @@ class ApplicantController extends Controller
         }
 
         return $this->render('board/applicant/new.html.twig', array(
+            'user' => $this->getUser(),
             'applicant' => $applicant,
             'form' => $form->createView(),
         ));
@@ -59,12 +60,7 @@ class ApplicantController extends Controller
      */
     public function showAction(Applicant $applicant)
     {
-        $deleteForm = $this->createDeleteForm($applicant);
-
-        return $this->render('board/applicant/show.html.twig', array(
-            'applicant' => $applicant,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('applicant_index');
     }
 
     /**
@@ -85,6 +81,7 @@ class ApplicantController extends Controller
 
         return $this->render('board/applicant/edit.html.twig', array(
             'applicant' => $applicant,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

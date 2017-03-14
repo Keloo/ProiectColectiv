@@ -57,6 +57,7 @@ class WorkLogController extends Controller
 
         return $this->render('board/worklog/new.html.twig', array(
             'workLog' => $workLog,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -66,12 +67,7 @@ class WorkLogController extends Controller
      */
     public function showAction(WorkLog $workLog)
     {
-        $deleteForm = $this->createDeleteForm($workLog);
-
-        return $this->render('board/worklog/show.html.twig', array(
-            'workLog' => $workLog,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('worklog_index');
     }
 
     /**
@@ -92,6 +88,7 @@ class WorkLogController extends Controller
 
         return $this->render('board/worklog/edit.html.twig', array(
             'workLog' => $workLog,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

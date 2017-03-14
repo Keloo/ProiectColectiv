@@ -49,6 +49,7 @@ class JobVacancyController extends Controller
 
         return $this->render('board/jobvacancy/new.html.twig', array(
             'jobVacancy' => $jobVacancy,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -59,12 +60,7 @@ class JobVacancyController extends Controller
      */
     public function showAction(JobVacancy $jobVacancy)
     {
-        $deleteForm = $this->createDeleteForm($jobVacancy);
-
-        return $this->render('board/jobvacancy/show.html.twig', array(
-            'jobVacancy' => $jobVacancy,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('jobvacancy_index');
     }
 
     /**
@@ -85,6 +81,7 @@ class JobVacancyController extends Controller
 
         return $this->render('board/jobvacancy/edit.html.twig', array(
             'jobVacancy' => $jobVacancy,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

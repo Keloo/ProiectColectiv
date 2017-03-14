@@ -48,6 +48,7 @@ class DemandController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $demand->setUser($this->getUser());
             $em->persist($demand);
             $em->flush($demand);
 
@@ -56,6 +57,7 @@ class DemandController extends Controller
 
         return $this->render('board/demand/new.html.twig', array(
             'demand' => $demand,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -65,12 +67,7 @@ class DemandController extends Controller
      */
     public function showAction(Demand $demand)
     {
-        $deleteForm = $this->createDeleteForm($demand);
-
-        return $this->render('board/demand/show.html.twig', array(
-            'demand' => $demand,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('demand_index');
     }
 
     /**
@@ -91,6 +88,7 @@ class DemandController extends Controller
 
         return $this->render('board/demand/edit.html.twig', array(
             'demand' => $demand,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
