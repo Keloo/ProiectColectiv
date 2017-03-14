@@ -1,36 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Employees</li>
+            </ol>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>First_name</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Last_name</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ user.address }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ user.phone }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('employee_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>First_name</th>
+                        <td>{{ user.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last_name</th>
+                        <td>{{ user.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ user.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ user.phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

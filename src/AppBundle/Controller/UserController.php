@@ -44,7 +44,6 @@ class UserController extends Controller
      */
     public function showAction(User $user)
     {
-
         return $this->render('board/user/show.html.twig', array(
             'user' => $user,
         ));

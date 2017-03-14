@@ -14,7 +14,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Username</th>
+                    {% if 'ROLE_HR' in user.roles %}
+                        <th>Username</th>
+                    {% endif %}
                     {% if 'ROLE_EMPLOYEE' in user.roles %}
                         <th>Actions</th>
                     {% endif %}
@@ -25,16 +27,17 @@
                     <tr>
                         <td>{{ demand.id }}</td>
                         <td>{{ demand.message }}</td>
-                        <td><a href="{{ path('employee_show', { 'id': demand.user.id }) }}">{{ demand.user.username }}</a></td>
+                        {% if 'ROLE_HR' in user.roles %}
+                            <td><a href="{{ path('employee_show', { 'id': demand.user.id }) }}">{{ demand.user.username }}</a></td>
+                        {% endif %}
                         {% if 'ROLE_EMPLOYEE' in user.roles %}
-
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('demand_edit', { 'id': demand.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('demand_edit', { 'id': demand.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}

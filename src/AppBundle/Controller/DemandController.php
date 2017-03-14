@@ -71,8 +71,9 @@ class DemandController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing demand entity.
-     * @Security("has_role('ROLE_HR')")
+     * @param Request $request
+     * @param Demand $demand
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Demand $demand)
     {
@@ -81,6 +82,7 @@ class DemandController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $demand->setUser($this->getUser());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('demand_edit', array('id' => $demand->getId()));
@@ -95,8 +97,9 @@ class DemandController extends Controller
     }
 
     /**
-     * Deletes a demand entity.
-     * @Security("has_role('ROLE_HR')")
+     * @param Request $request
+     * @param Demand $demand
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Demand $demand)
     {

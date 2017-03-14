@@ -49,6 +49,7 @@ class WorkLogController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $workLog->setUser($this->getUser());
             $em->persist($workLog);
             $em->flush($workLog);
 
@@ -81,6 +82,7 @@ class WorkLogController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $workLog->setUser($this->getUser());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('worklog_edit', array('id' => $workLog->getId()));
