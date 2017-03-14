@@ -1,21 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Alert edit</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Home</li><li>Alert</li><li>Edit</li>
+            </ol>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div id="content">
 
-    <ul>
-        <li>
-            <a href="{{ path('alert_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
+                <header role="heading">
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>Alert edit</h2>
+                </header>
+
+                <div role="content">
+
+                    <form action="{{ path('alert_edit', { 'id': alert.id }) }}" method="post">
+
+                        Start time:
+                        <br>
+                        {{ form_widget(edit_form.start_time) }}
+                        <br>
+                        End time:
+                        <br>
+                        {{ form_widget(edit_form.end_time) }}
+                        <br>
+                        Message:
+                        <br>
+                        {{ form_widget(edit_form.message) }}
+                        {{ form_widget(edit_form._token) }}
+
+                        <br>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Edit" />
+                        {{ form_start(delete_form) }}
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                        {{ form_end(delete_form) }}
+                        <br>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

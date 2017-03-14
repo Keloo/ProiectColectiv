@@ -49,6 +49,7 @@ class AlertController extends Controller
 
         return $this->render('board/alert/new.html.twig', array(
             'alert' => $alert,
+            'user' => $this->getUser(),
             'form' => $form->createView(),
         ));
     }
@@ -59,12 +60,7 @@ class AlertController extends Controller
      */
     public function showAction(Alert $alert)
     {
-        $deleteForm = $this->createDeleteForm($alert);
-
-        return $this->render('board/alert/show.html.twig', array(
-            'alert' => $alert,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirectToRoute('alert_index');
     }
 
     /**
@@ -85,6 +81,7 @@ class AlertController extends Controller
 
         return $this->render('board/alert/edit.html.twig', array(
             'alert' => $alert,
+            'user' => $this->getUser(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
