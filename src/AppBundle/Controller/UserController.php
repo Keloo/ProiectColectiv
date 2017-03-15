@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Alert;
 use AppBundle\Entity\User;
 use AppBundle\Entity\WorkLog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -47,6 +48,14 @@ class UserController extends Controller
     {
         $user->setWorkEndDate(new \DateTime('now'));
         $this->getDoctrine()->getManager()->flush($user);
+
+        $alert = new Alert();
+        $alert->setStartTime(new \DateTime('now'))
+            ->setEndTime(new \DateTime('now'))
+            ->setMessage("New vacancy opened: ". $user->getJobVacancy()->getName() .", notify your friends :)");
+
+        $this->getDoctrine()->getManager()->persist($alert);
+        $this->getDoctrine()->getManager()->flush();
 
         return $this->redirectToRoute('employee_index');
     }
