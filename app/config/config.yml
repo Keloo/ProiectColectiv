@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: en
     vacancy_count: 50
+    employee_budget: 3200
 
 framework:
     #esi:             ~

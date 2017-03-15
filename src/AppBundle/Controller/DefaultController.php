@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\WorkLog;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,7 @@ class DefaultController extends Controller
      */
     public function boardIndexAction(Request $request)
     {
+        $totalHoursWorked = 0;
         $workLogStats = [];
         $workLogs = $this->getDoctrine()->getRepository('AppBundle:WorkLog')->findAll();
         /** @var WorkLog $workLog */
@@ -36,6 +38,7 @@ class DefaultController extends Controller
             $month = $workLog->getStartTime()->format('m');
             $day = $workLog->getStartTime()->format('d');
             $hours = $workLog->getStartTime()->diff($workLog->getEndTime())->h;
+            $totalHoursWorked += $hours;
             $updated = false;
             for ($i = 0; $i<sizeof($workLogStats); $i++) {
                 if ($workLogStats[$i][0] == [$year, $month, $day]) {
@@ -52,7 +55,14 @@ class DefaultController extends Controller
             }
         }
 
+        /** @var Collection $activeUsers */
+        $activeUsers = $this->getDoctrine()->getRepository('AppBundle:User')->findBy(['work_end_date' => null]);
+
         return $this->render('board/index.html.twig', [
+            'vacancyCount' => $this->getParameter('vacancy_count'),
+            'totalHoursWorked' => $totalHoursWorked,
+            'activeUsers' => $activeUsers,
+            'budgetPerEmployee' => $this->getParameter('employee_budget'),
             'workLogStats' => json_encode($workLogStats),
             'user' => $this->getUser(),
         ]);
