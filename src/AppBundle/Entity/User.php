@@ -331,4 +331,33 @@ class User extends BaseModel
     {
         return $this->work_end_date;
     }
+    /**
+     * @var \AppBundle\Entity\JobVacancy
+     */
+    private $jobVacancy;
+
+
+    /**
+     * Set jobVacancy
+     *
+     * @param \AppBundle\Entity\JobVacancy $jobVacancy
+     *
+     * @return User
+     */
+    public function setJobVacancy(\AppBundle\Entity\JobVacancy $jobVacancy = null)
+    {
+        $this->jobVacancy = $jobVacancy;
+
+        return $this;
+    }
+
+    /**
+     * Get jobVacancy
+     *
+     * @return \AppBundle\Entity\JobVacancy
+     */
+    public function getJobVacancy()
+    {
+        return $this->jobVacancy;
+    }
 }

@@ -14,6 +14,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Hour rate ($)</th>
                     {% if 'ROLE_HR' in user.roles %}
                         <th>Actions</th>
                     {% endif %}
@@ -24,6 +25,7 @@
                     <tr>
                         <td>{{ jobVacancy.id }}</td>
                         <td>{{ jobVacancy.name }}</td>
+                        <td>{{ jobVacancy.rate }}</td>
                         <td>
                             <ul>
                                 <li>

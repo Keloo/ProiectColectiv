@@ -59,4 +59,33 @@ class JobVacancy
     {
         return $this->name;
     }
+    /**
+     * @var integer
+     */
+    private $rate;
+
+
+    /**
+     * Set rate
+     *
+     * @param integer $rate
+     *
+     * @return JobVacancy
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return integer
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
 }

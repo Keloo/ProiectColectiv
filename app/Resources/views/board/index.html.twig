@@ -26,14 +26,6 @@
                         </li>
                         <li class="sparks-info">
                             <h5>
-                                Rate
-                                <span class="txt-color-orangeDark">
-                                    ${{ budgetPerEmployee/160 }}/hour
-                                </span>
-                            </h5>
-                        </li>
-                        <li class="sparks-info">
-                            <h5>
                                 Hours worked
                                 <span class="txt-color-purple">
                                     <i class="fa fa-arrow-circle-up"></i>
@@ -44,7 +36,7 @@
                         <li class="sparks-info">
                             <h5>
                                 Budget left
-                                <span class="txt-color-blue">${{ budgetPerEmployee*activeUsers|length - totalHoursWorked*20 }} / ${{ budgetPerEmployee*activeUsers|length }}</span>
+                                <span class="txt-color-blue">${{ moneySpent }} / ${{ totalBudget }}</span>
                             </h5>
                         </li>
                     </ul>

@@ -20,6 +20,7 @@
                     <th>Work start date</th>
                     <th>Work end date</th>
                     <th>Hours worked</th>
+                    <th>Job Vacancy</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -34,6 +35,7 @@
                         <td>{% if user1.workStartDate %}{{ user1.workStartDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if user1.workEndDate %}{{ user1.workEndDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ user1.hoursWorked }}</td>
+                        <td><a href="{{ path('jobvacancy_index') }}">{{ user1.jobVacancy.name }}</a></td>
                         <td>
                             <ul>
                                 <li>

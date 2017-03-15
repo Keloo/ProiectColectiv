@@ -34,3 +34,9 @@ AppBundle\Entity\User:
     demands:
       targetEntity: Demand
       mappedBy: user
+  manyToOne:
+    jobVacancy:
+      targetEntity: JobVacancy
+      joinColumn:
+        name: job_vacancy_id
+        referencedColumnName: id

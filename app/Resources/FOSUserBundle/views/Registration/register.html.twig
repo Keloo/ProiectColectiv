@@ -4,13 +4,6 @@
 
 {% block body %}
 
-{#{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}#}
-    {#{{ form_widget(form) }}#}
-{#<div>#}
-    {#<input type="submit" value="{{ 'registration.submit'|trans }}" />#}
-{#</div>#}
-{#{{ form_end(form) }}#}
-
 {% include ":components/homepage:header_register.html.twig" %}
 
 <div id="main" role="main">
@@ -72,6 +65,13 @@
                                 <label class="input"> <i class="icon-append fa fa-envelope"></i>
                                     {{ form_widget(form.email, { 'attr': { 'placeholder': 'Email' }}) }}
                                     <b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
+                            </section>
+
+                            <section>
+                                <label class="select">
+                                    <i class="icon-append fa fa-envelope"></i>
+                                    {{ form_widget(form.jobVacancy, { 'attr': { 'placeholder': 'Vacancy' }}) }}
+                                </label>
                             </section>
 
                             <section>

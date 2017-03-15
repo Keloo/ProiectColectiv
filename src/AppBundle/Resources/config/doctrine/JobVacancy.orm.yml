@@ -10,3 +10,5 @@ AppBundle\Entity\JobVacancy:
     name:
       type: string
       length: 200
+    rate:
+      type: integer

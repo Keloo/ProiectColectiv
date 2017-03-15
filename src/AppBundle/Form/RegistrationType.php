@@ -17,7 +17,8 @@ class RegistrationType extends AbstractType
             ->add('first_name', null, ['required' => true])
             ->add('last_name', null, ['required' => true])
             ->add('address')
-            ->add('phone');
+            ->add('phone')
+            ->add('jobVacancy', null, ['required' => true]);
     }
 
     /**
