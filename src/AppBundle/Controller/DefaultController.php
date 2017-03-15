@@ -36,10 +36,20 @@ class DefaultController extends Controller
             $month = $workLog->getStartTime()->format('m');
             $day = $workLog->getStartTime()->format('d');
             $hours = $workLog->getStartTime()->diff($workLog->getEndTime())->h;
-            $workLogStats[] = [
-                [$year, $month, $day],
-                $hours,
-            ];
+            $updated = false;
+            for ($i = 0; $i<sizeof($workLogStats); $i++) {
+                if ($workLogStats[$i][0] == [$year, $month, $day]) {
+                    $workLogStats[$i][1] += $hours;
+                    $updated = true;
+                    break;
+                }
+            }
+            if (!$updated) {
+                $workLogStats[] = [
+                    [$year, $month, $day],
+                    $hours,
+                ];
+            }
         }
 
         return $this->render('board/index.html.twig', [

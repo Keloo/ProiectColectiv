@@ -24,21 +24,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for user in users %}
+                {% for user1 in users %}
                     <tr>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.firstname }}</td>
-                        <td>{{ user.lastname }}</td>
-                        <td>{{ user.address }}</td>
-                        <td>{{ user.phone }}</td>
-                        <td>{% if user.workStartDate %}{{ user.workStartDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{% if user.workEndDate %}{{ user.workEndDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ user.hoursWorked }}</td>
+                        <td>{{ user1.id }}</td>
+                        <td>{{ user1.firstname }}</td>
+                        <td>{{ user1.lastname }}</td>
+                        <td>{{ user1.address }}</td>
+                        <td>{{ user1.phone }}</td>
+                        <td>{% if user1.workStartDate %}{{ user1.workStartDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if user1.workEndDate %}{{ user1.workEndDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ user1.hoursWorked }}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('employee_show', { 'id': user.id }) }}">show</a>
+                                    <a href="{{ path('employee_show', { 'id': user1.id }) }}">show</a>
                                 </li>
+                                {% if "ROLE_HR" in user.roles and user1.workEndDate == null %}
+                                    <li>
+                                        <a href="{{ path('employee_fire', { 'id': user1.id }) }}">fire</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </td>
                     </tr>

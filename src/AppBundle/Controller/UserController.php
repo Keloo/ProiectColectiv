@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Entity\WorkLog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -36,6 +37,18 @@ class UserController extends Controller
             'user' => $this->getUser(),
             'users' => $users,
         ));
+    }
+
+    /**
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function fireAction(User $user)
+    {
+        $user->setWorkEndDate(new \DateTime('now'));
+        $this->getDoctrine()->getManager()->flush($user);
+
+        return $this->redirectToRoute('employee_index');
     }
 
     /**
