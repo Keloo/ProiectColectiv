@@ -13,13 +13,13 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
+                    <th>Message</th>
+                    <th>Type</th>
+                    <th>Approved</th>
                     {% if 'ROLE_HR' in user.roles %}
                         <th>Username</th>
                     {% endif %}
-                    {% if 'ROLE_EMPLOYEE' in user.roles %}
-                        <th>Actions</th>
-                    {% endif %}
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +27,8 @@
                     <tr>
                         <td>{{ demand.id }}</td>
                         <td>{{ demand.message }}</td>
+                        <td>{{ demand.demandType.name }}</td>
+                        <td>{% if demand.approved %}Yes{% else %}Waiting{% endif %}</td>
                         {% if 'ROLE_HR' in user.roles %}
                             <td><a href="{{ path('employee_show', { 'id': demand.user.id }) }}">{{ demand.user.username }}</a></td>
                         {% endif %}
@@ -36,7 +38,22 @@
                                     <li>
                                         <a href="{{ path('demand_edit', { 'id': demand.id }) }}">edit</a>
                                     </li>
+                                    {% if demand.approved == true and demand.demandType.pdf %}
+                                    <li>
+                                        <a href="{{ path('pdf_download', { 'id': demand.demandType.pdf.id }) }}">Get pdf</a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
+                            </td>
+                        {% else %}
+                            <td>
+                            {% if demand.approved == false %}
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('demand_approve', { 'id': demand.id }) }}">approve</a>
+                                        </li>
+                                    </ul>
+                            {% endif %}
                             </td>
                         {% endif %}
                     </tr>

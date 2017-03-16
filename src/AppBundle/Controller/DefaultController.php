@@ -17,6 +17,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+
         if ($this->isGranted("IS_AUTHENTICATED_FULLY")) {
             return $this->redirectToRoute("board_index");
         } else {

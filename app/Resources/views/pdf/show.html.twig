@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pdf</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pdf.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ pdf.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pdf_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

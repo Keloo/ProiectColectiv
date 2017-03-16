@@ -22,3 +22,8 @@ demand_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Demand:delete" }
     methods:  DELETE
+
+demand_approve:
+    path:     /{id}/approve
+    defaults: { _controller: "AppBundle:Demand:approve" }
+    methods:  GET

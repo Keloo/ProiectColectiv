@@ -109,4 +109,33 @@ class Demand
     {
         return $this->user;
     }
+    /**
+     * @var boolean
+     */
+    private $approved = false;
+
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     *
+     * @return Demand
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
 }

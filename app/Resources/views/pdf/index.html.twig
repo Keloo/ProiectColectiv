@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pdfs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pdf in pdfs %}
+            <tr>
+                <td><a href="{{ path('pdf_show', { 'id': pdf.id }) }}">{{ pdf.id }}</a></td>
+                <td>{{ pdf.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pdf_show', { 'id': pdf.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

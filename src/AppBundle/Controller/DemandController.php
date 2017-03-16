@@ -37,6 +37,18 @@ class DemandController extends Controller
     }
 
     /**
+     * @param Demand $demand
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function approveAction(Demand $demand)
+    {
+        $demand->setApproved(true);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute("demand_index");
+    }
+
+    /**
      * Creates a new demand entity.
      * @Security("has_role('ROLE_EMPLOYEE')")
      */

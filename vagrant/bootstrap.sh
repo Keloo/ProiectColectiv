@@ -10,6 +10,13 @@ sudo apt-get install -y mysql-server > /dev/null
 
 #install php
 sudo apt-get install python-software-properties software-properties-common
+
+#html to pdf service
+sudo apt-get install wkhtmltopdf xvfb
+sudo apt-get install openssl build-essential xorg libssl-dev
+echo 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf "$@"' > /usr/local/bin/wkhtmltopdf.sh
+sudo chmod a+x /usr/local/bin/wkhtmltopdf.sh
+
 sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 sudo apt-get update
 

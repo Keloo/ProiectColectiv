@@ -32,3 +32,6 @@ app_demand:
 app_alert:
     resource: "@AppBundle/Resources/config/routing/alert.yml"
     prefix:   /board/alert
+app_board_pdf:
+    resource: "@AppBundle/Resources/config/routing/pdf.yml"
+    prefix:   /board/pdf

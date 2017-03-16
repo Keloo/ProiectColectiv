@@ -10,3 +10,10 @@ AppBundle\Entity\DemandType:
     name:
       type: string
       length: 200
+  manyToOne:
+    pdf:
+      targetEntity: Pdf
+      joinColumn:
+        name: pdf_id
+        referencedColumnName: id
+      nullable: true

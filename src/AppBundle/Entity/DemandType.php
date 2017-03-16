@@ -59,4 +59,33 @@ class DemandType
     {
         return $this->getName();
     }
+    /**
+     * @var \AppBundle\Entity\Pdf
+     */
+    private $pdf;
+
+
+    /**
+     * Set pdf
+     *
+     * @param \AppBundle\Entity\Pdf $pdf
+     *
+     * @return DemandType
+     */
+    public function setPdf(\AppBundle\Entity\Pdf $pdf = null)
+    {
+        $this->pdf = $pdf;
+
+        return $this;
+    }
+
+    /**
+     * Get pdf
+     *
+     * @return \AppBundle\Entity\Pdf
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
+    }
 }

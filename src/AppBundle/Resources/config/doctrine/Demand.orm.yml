@@ -9,6 +9,10 @@ AppBundle\Entity\Demand:
   fields:
     message:
       type: text
+    approved:
+      type: boolean
+      options:
+        default: false
   manyToOne:
     demandType:
       targetEntity: DemandType

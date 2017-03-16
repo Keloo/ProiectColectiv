@@ -1,0 +1,14 @@
+pdf_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Pdf:index" }
+    methods:  GET
+
+pdf_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Pdf:show" }
+    methods:  GET
+
+pdf_download:
+    path:     /{id}/download
+    defaults: { _controller: "AppBundle:Pdf:download" }
+    methods:  GET
