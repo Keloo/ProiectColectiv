@@ -53,7 +53,7 @@ cd /var/www
 echo "Installing composer packages"
 composer install --prefer-dist -o > /dev/null
 
-#php app/console doctrine:database:create
-#php app/console doctrine:schema:update --force
-#php app/console doctrine:fixtures:load -n
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:fixtures:load -n
 
