@@ -1,10 +1,18 @@
 .Proiect Colectiv
 =========
-@todo:
-done 1. posturi vacante, angajare/parasire (actualizare)
-done 2. buget presoana (raport, lucrat/ramas) total lunar pe companie.
-3. 
-    1. cerere concediu (validation, 23 zile la un an)
-        2. cerere venit (post, rate, period)
-done 4. alert on employee leaving. (posta vacant)
-5. documentatie
+
+Installation:
+
+Make sure you have virtualbox and vagrant installed!
+
+1. cd to `/vagrant` folder
+2. run `vagrant up`
+3. visit: `http://192.168.56.20`
+
+
+Human resources account:\
+user: `hr` pass `password` 
+
+Employee account:\
+user `john` pass `password`\
+user `nick` pass `password`
