@@ -20,7 +20,7 @@ sudo chmod a+x /usr/local/bin/wkhtmltopdf.sh
 sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 sudo apt-get update
 
-sudo apt-get install -y git apache2 php7 php7-xml libapache2-mod-php7 curl php7-mysql php7-cli php7-curl php7-mysql php7-intl > /dev/null
+sudo apt-get install -y git apache2 php php-xml libapache2-mod-php curl php-mysql php-cli php-curl php-mysql php-intl > /dev/null
 
 echo "ServerName localhost" | sudo tee -a /etc/apache2/apache2.conf
 sudo a2enmod rewrite > /dev/null
