@@ -35,7 +35,11 @@ class DefaultController extends Controller
         $totalHoursWorked = 0;
         $moneySpent = 0;
         $workLogStats = [];
-        $workLogs = $this->getDoctrine()->getRepository('AppBundle:WorkLog')->findAll();
+        if (in_array('ROLE_HR', $this->getUser()->getRoles())) {
+            $workLogs = $this->getDoctrine()->getRepository('AppBundle:WorkLog')->findAll();
+        } else {
+            $workLogs = $this->getDoctrine()->getRepository('AppBundle:WorkLog')->findBy(['user' => $this->getUser()]);
+        }
         /** @var WorkLog $workLog */
         foreach ($workLogs as $workLog) {
             $year = $workLog->getStartTime()->format('Y');
