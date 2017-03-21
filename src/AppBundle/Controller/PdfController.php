@@ -42,7 +42,9 @@ class PdfController extends Controller
 
     public function downloadAction(Pdf $pdf)
     {
-        $html = $this->renderView('::pdf/download/'.$pdf->getName().'.html.twig');
+        $html = $this->renderView('::pdf/download/'.$pdf->getName().'.html.twig',[
+            'user' => $this->getUser(),
+        ]);
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
