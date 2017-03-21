@@ -1,4 +1,10 @@
-<center><h1>Vacation report</h1></center>
-
-
-<h2 style="color: red">asdfasd</h2>
+<center><h3>Cerere concediu de odihna</h3></center>
+<br>
+<pre>
+    Subsemnatul/a, {{ user.firstname }} {{ user.lastname }} angajat al Panca Corp. in functie de {{ user.jobVacancy.name }},
+    va rog sa-mi aprobati efectuarea unui numar de 7 zile de concediu de odihna aferent anului {{ "now"|date('Y') }}.
+</pre>
+<br><br>
+<pre style="margin-right: 20px; text-align:right">
+    {{ "now"|date('m/d/Y') }}, ADMINISTRATOR
+</pre>
