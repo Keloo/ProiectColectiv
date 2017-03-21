@@ -1,1 +1,18 @@
-<center><h1>Income reposrt</h1></center>
+<br><br><br>
+<pre>
+    SC: Panda Team SRL / SC
+    Sediu: FSEGA Corporation building nr1
+    CF: Some CF Here
+    Inmatriculata sub nr: 25/06/2017
+</pre>
+<center><h3>ADEVERINTA</h3></center>
+<br>
+<pre>
+    Adeverim prin prezenta ca dl/dna  {{ user.firstname }} {{ user.lastName }} domiciliat  în {{ user.address }},
+    este încadrat în unitatea noastra pe durata nedeterminata de la data de {{ user.workStartDate|date("m/d/Y") }} în functia de {{ user.jobVacancy.name }} cu o retributie tarifar de {{ user.jobVacancy.rate*140 }} $/luna. 
+    Adeverinta a fost eliberata pentru a se servi oriunde.
+</pre>
+
+<pre>
+    {{ "now"|date("m/d/Y") }}, ADMINISTRATOR
+</pre>
