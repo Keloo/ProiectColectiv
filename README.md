@@ -11,8 +11,8 @@ Make sure you have virtualbox and vagrant installed!
 
 
 Human resources account:\
-user: `hr` pass `password` 
+user: `hr` pass `peanut-butter` 
 
 Employee account:\
-user `john` pass `password`\
-user `nick` pass `password`
+user `john` pass `peanut-butter`\
+user `nick` pass `peanut-butter`
