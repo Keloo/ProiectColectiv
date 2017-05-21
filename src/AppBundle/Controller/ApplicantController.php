@@ -76,7 +76,7 @@ class ApplicantController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('applicant_edit', array('id' => $applicant->getId()));
+            return $this->redirectToRoute('applicant_index', array('id' => $applicant->getId()));
         }
 
         return $this->render('board/applicant/edit.html.twig', array(

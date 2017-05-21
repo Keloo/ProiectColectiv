@@ -76,7 +76,7 @@ class AlertController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('alert_edit', array('id' => $alert->getId()));
+            return $this->redirectToRoute('alert_index', array('id' => $alert->getId()));
         }
 
         return $this->render('board/alert/edit.html.twig', array(

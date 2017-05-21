@@ -43,7 +43,6 @@ class AssociateController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($associate);
             $em->flush($associate);
-
             return $this->redirectToRoute('associate_show', array('id' => $associate->getId()));
         }
 

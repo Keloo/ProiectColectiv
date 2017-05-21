@@ -76,7 +76,7 @@ class DemandTypeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('demandtype_edit', array('id' => $demandType->getId()));
+            return $this->redirectToRoute('demandtype_index', array('id' => $demandType->getId()));
         }
 
         return $this->render('board/demandtype/edit.html.twig', array(

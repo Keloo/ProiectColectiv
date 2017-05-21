@@ -97,7 +97,7 @@ class DemandController extends Controller
             $demand->setUser($this->getUser());
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('demand_edit', array('id' => $demand->getId()));
+            return $this->redirectToRoute('demand_index', array('id' => $demand->getId()));
         }
 
         return $this->render('board/demand/edit.html.twig', array(
