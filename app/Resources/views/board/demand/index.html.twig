@@ -53,6 +53,8 @@
                                             <a href="{{ path('demand_approve', { 'id': demand.id }) }}">approve</a>
                                         </li>
                                     </ul>
+                            {% else %}
+                                no action
                             {% endif %}
                             </td>
                         {% endif %}

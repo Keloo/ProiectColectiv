@@ -17,6 +17,13 @@ class Pdf
      */
     private $name;
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName()?$this->getName():'';
+    }
 
     /**
      * Get id
